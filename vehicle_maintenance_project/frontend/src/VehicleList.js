@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-// ✅ Correct backend API URL
-const API = "https://vehicle-maintenance-project-day1-4.onrender.com";
+// Use environment variable for backend API URL
+const API = process.env.REACT_APP_API_URL;
 
 export default function VehicleList() {
   const [vehicles, setVehicles] = useState([]);
