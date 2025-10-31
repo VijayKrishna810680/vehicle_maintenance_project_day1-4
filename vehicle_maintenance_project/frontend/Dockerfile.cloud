@@ -1,0 +1,14 @@
+FROM node:18 AS builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --silent
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+# Remove default config and serve on port 8080 (Cloud Run expects PORT env; 8080 is common)
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx_cloud.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]

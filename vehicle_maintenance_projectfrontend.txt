@@ -1,0 +1,6 @@
+vehicle_maintenance_project/frontend/
+
+Build Command
+Render runs this command to build your app before each deploy.
+vehicle_maintenance_project/frontend/ $                                   npm install && npm run build
+

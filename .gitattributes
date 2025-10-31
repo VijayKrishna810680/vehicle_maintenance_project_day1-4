@@ -1,0 +1,7 @@
+# Handle line endings automatically
+* text=auto
+
+# Force specific files
+*.js text eol=lf
+*.py text eol=lf
+*.json text eol=lf

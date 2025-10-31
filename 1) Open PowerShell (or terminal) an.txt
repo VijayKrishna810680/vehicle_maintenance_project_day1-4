@@ -1,0 +1,37 @@
+1) Open PowerShell (or terminal) and run:
+
+cd "C:\Users\thann\Downloads\vehicle_maintenance_project_day1-2\vehicle_maintenance_project"
+
+2) (Optional, only if you just edited package.json)
+
+Rebuild your containers completely so changes apply:
+
+docker-compose up -d --build
+
+3) If it’s already built, just start everything:
+docker-compose up -d
+
+
+This will start:
+
+PostgreSQL database → port 5432
+
+Backend (FastAPI) → port 8000
+
+Frontend (React) → port 3000
+
+4) Check that containers are running:
+docker ps
+
+
+You should see:
+
+vehicle_maintenance_project-frontend-1   Up ...   0.0.0.0:3000->3000/tcp
+vehicle_maintenance_project-backend-1    Up ...   0.0.0.0:8000->8000/tcp
+vehicle_maintenance_project-db-1         Up ...   0.0.0.0:5432->5432/tcp
+
+5) Open in browser:
+
+🌐 Frontend → http://localhost:3000
+
+⚙️ Backend API docs → http://localhost:8000/docs

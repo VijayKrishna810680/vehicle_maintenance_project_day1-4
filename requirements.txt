@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy
+psycopg2-binary
+alembic
+pydantic
+pytest
+httpx
+python-dotenv
+# Optional/LangChain: uncomment if you want LangChain/OpenAI integration
+# langchain
+# openai

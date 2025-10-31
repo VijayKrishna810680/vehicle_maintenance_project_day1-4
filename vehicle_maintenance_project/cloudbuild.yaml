@@ -1,0 +1,35 @@
+steps:
+  # Build backend image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'backend/Dockerfile', '-t', 'gcr.io/$PROJECT_ID/vehicle-backend:$SHORT_SHA', 'backend']
+
+  # Build frontend production image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'frontend/Dockerfile.cloud', '-t', 'gcr.io/$PROJECT_ID/vehicle-frontend:$SHORT_SHA', 'frontend']
+
+  # Push images
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/vehicle-backend:$SHORT_SHA']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/vehicle-frontend:$SHORT_SHA']
+
+  # Deploy to Cloud Run using gcloud
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        set -e
+        REGION=${_REGION:-us-central1}
+        gcloud run deploy vehicle-backend --image gcr.io/$PROJECT_ID/vehicle-backend:$SHORT_SHA --region $REGION --platform managed --quiet --allow-unauthenticated
+        gcloud run deploy vehicle-frontend --image gcr.io/$PROJECT_ID/vehicle-frontend:$SHORT_SHA --region $REGION --platform managed --quiet --allow-unauthenticated
+
+images:
+  - 'gcr.io/$PROJECT_ID/vehicle-backend:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/vehicle-frontend:$SHORT_SHA'
+
+substitutions:
+  _REGION: 'us-central1'
+
+timeout: '1200s'
