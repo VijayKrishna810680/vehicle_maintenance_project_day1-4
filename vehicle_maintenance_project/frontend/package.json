@@ -1,12 +1,21 @@
 {
-  "name": "vehicle-frontend",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://VijayKrishna810680.github.io/vehicle_maintenance_project_day1-4",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "axios": "^1.6.0"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "node node_modules/react-scripts/bin/react-scripts.js build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -19,10 +28,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-scripts": "5.0.1"
   }
 }

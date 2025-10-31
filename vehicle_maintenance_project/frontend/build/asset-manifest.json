@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.d868ea87.css",
-    "main.js": "/static/js/main.5ffb0b3f.js",
-    "index.html": "/index.html",
-    "main.d868ea87.css.map": "/static/css/main.d868ea87.css.map",
-    "main.5ffb0b3f.js.map": "/static/js/main.5ffb0b3f.js.map"
+    "main.css": "/vehicle_maintenance_project_day1-4/static/css/main.d868ea87.css",
+    "main.js": "/vehicle_maintenance_project_day1-4/static/js/main.e2a6fda8.js",
+    "index.html": "/vehicle_maintenance_project_day1-4/index.html",
+    "main.d868ea87.css.map": "/vehicle_maintenance_project_day1-4/static/css/main.d868ea87.css.map",
+    "main.e2a6fda8.js.map": "/vehicle_maintenance_project_day1-4/static/js/main.e2a6fda8.js.map"
   },
   "entrypoints": [
     "static/css/main.d868ea87.css",
-    "static/js/main.5ffb0b3f.js"
+    "static/js/main.e2a6fda8.js"
   ]
 }
