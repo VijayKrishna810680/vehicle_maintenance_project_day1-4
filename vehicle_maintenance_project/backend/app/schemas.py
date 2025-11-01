@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional, List
 from datetime import date
 
@@ -13,10 +13,10 @@ class MaintenanceRecordCreate(MaintenanceRecordBase):
     pass
 
 class MaintenanceRecord(MaintenanceRecordBase):
+    model_config = ConfigDict(from_attributes=True)
+    
     id: int
     vehicle_id: int
-    class Config:
-        orm_mode = True
 
 class VehicleBase(BaseModel):
     vin: str
@@ -28,7 +28,7 @@ class VehicleCreate(VehicleBase):
     pass
 
 class Vehicle(VehicleBase):
+    model_config = ConfigDict(from_attributes=True)
+    
     id: int
     records: List[MaintenanceRecord] = []
-    class Config:
-        orm_mode = True
